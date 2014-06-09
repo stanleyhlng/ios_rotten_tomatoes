@@ -20,8 +20,10 @@
 		202AFA5919420A5700A9950E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 202AFA4119420A5700A9950E /* UIKit.framework */; };
 		202AFA6119420A5700A9950E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 202AFA5F19420A5700A9950E /* InfoPlist.strings */; };
 		202AFA6319420A5700A9950E /* ios_rotten_tomatoesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 202AFA6219420A5700A9950E /* ios_rotten_tomatoesTests.m */; };
-		20E3351119420D3800BF298E /* MovieListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E3350F19420D3800BF298E /* MovieListViewController.m */; };
-		20E3351219420D3800BF298E /* MovieListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20E3351019420D3800BF298E /* MovieListViewController.xib */; };
+		20EA3D2719458D7C00983CEB /* MoviesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20EA3D2519458D7C00983CEB /* MoviesViewController.m */; };
+		20EA3D2819458D7C00983CEB /* MoviesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20EA3D2619458D7C00983CEB /* MoviesViewController.xib */; };
+		20EA3D2C194596D100983CEB /* MovieTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20EA3D2A194596D100983CEB /* MovieTableViewCell.m */; };
+		20EA3D2D194596D100983CEB /* MovieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20EA3D2B194596D100983CEB /* MovieTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,9 +53,12 @@
 		202AFA5E19420A5700A9950E /* ios_rotten_tomatoesTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ios_rotten_tomatoesTests-Info.plist"; sourceTree = "<group>"; };
 		202AFA6019420A5700A9950E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		202AFA6219420A5700A9950E /* ios_rotten_tomatoesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ios_rotten_tomatoesTests.m; sourceTree = "<group>"; };
-		20E3350E19420D3800BF298E /* MovieListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieListViewController.h; sourceTree = "<group>"; };
-		20E3350F19420D3800BF298E /* MovieListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieListViewController.m; sourceTree = "<group>"; };
-		20E3351019420D3800BF298E /* MovieListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovieListViewController.xib; sourceTree = "<group>"; };
+		20EA3D2419458D7C00983CEB /* MoviesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoviesViewController.h; sourceTree = "<group>"; };
+		20EA3D2519458D7C00983CEB /* MoviesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoviesViewController.m; sourceTree = "<group>"; };
+		20EA3D2619458D7C00983CEB /* MoviesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoviesViewController.xib; sourceTree = "<group>"; };
+		20EA3D29194596D100983CEB /* MovieTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MovieTableViewCell.h; path = ../MovieTableViewCell.h; sourceTree = "<group>"; };
+		20EA3D2A194596D100983CEB /* MovieTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MovieTableViewCell.m; path = ../MovieTableViewCell.m; sourceTree = "<group>"; };
+		20EA3D2B194596D100983CEB /* MovieTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MovieTableViewCell.xib; path = ../MovieTableViewCell.xib; sourceTree = "<group>"; };
 		330DEA16DFB147ABA14C0D0A /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		43336DA20A36482994242860 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -122,9 +127,12 @@
 				202AFA4D19420A5700A9950E /* AppDelegate.m */,
 				202AFA4F19420A5700A9950E /* Images.xcassets */,
 				202AFA4419420A5700A9950E /* Supporting Files */,
-				20E3350E19420D3800BF298E /* MovieListViewController.h */,
-				20E3350F19420D3800BF298E /* MovieListViewController.m */,
-				20E3351019420D3800BF298E /* MovieListViewController.xib */,
+				20EA3D2419458D7C00983CEB /* MoviesViewController.h */,
+				20EA3D2519458D7C00983CEB /* MoviesViewController.m */,
+				20EA3D2619458D7C00983CEB /* MoviesViewController.xib */,
+				20EA3D29194596D100983CEB /* MovieTableViewCell.h */,
+				20EA3D2A194596D100983CEB /* MovieTableViewCell.m */,
+				20EA3D2B194596D100983CEB /* MovieTableViewCell.xib */,
 			);
 			path = ios_rotten_tomatoes;
 			sourceTree = "<group>";
@@ -235,8 +243,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20E3351219420D3800BF298E /* MovieListViewController.xib in Resources */,
 				202AFA4819420A5700A9950E /* InfoPlist.strings in Resources */,
+				20EA3D2819458D7C00983CEB /* MoviesViewController.xib in Resources */,
+				20EA3D2D194596D100983CEB /* MovieTableViewCell.xib in Resources */,
 				202AFA5019420A5700A9950E /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -289,8 +298,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20EA3D2719458D7C00983CEB /* MoviesViewController.m in Sources */,
 				202AFA4E19420A5700A9950E /* AppDelegate.m in Sources */,
-				20E3351119420D3800BF298E /* MovieListViewController.m in Sources */,
+				20EA3D2C194596D100983CEB /* MovieTableViewCell.m in Sources */,
 				202AFA4A19420A5700A9950E /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

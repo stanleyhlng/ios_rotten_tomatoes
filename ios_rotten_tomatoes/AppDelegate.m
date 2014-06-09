@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "MovieListViewController.h"
+#import "MoviesViewController.h"
 
 @implementation AppDelegate
 
@@ -16,8 +16,11 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
 
-    MovieListViewController *vc = [[MovieListViewController alloc] init];
-    self.window.rootViewController = vc;
+    MoviesViewController *vc = [[MoviesViewController alloc] init];
+    
+    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:vc];
+    
+    self.window.rootViewController = nvc;
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
