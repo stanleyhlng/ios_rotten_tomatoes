@@ -49,16 +49,25 @@ UIRefreshControl *refreshControl;
     //NSString *url = @"http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/top_rentals.json?apikey=g9au4hv6khv6wzvzgt55gpqs";
     
     //API: Box Office Movies
-    NSString *url = @"http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?apikey=g9au4hv6khv6wzvzgt55gpqs";
+    NSString *url = @"http://1api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?apikey=g9au4hv6khv6wzvzgt55gpqs";
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
-    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-        //NSLog(@"%@", object);
+    [NSURLConnection sendAsynchronousRequest:request
+                                       queue:[NSOperationQueue mainQueue]
+                           completionHandler:^(NSURLResponse *response,
+                                               NSData *data,
+                                               NSError *connectionError)
+    {
+        if (connectionError == nil) {
+            id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+            //NSLog(@"%@", object);
         
-        self.movies = object[@"movies"];
-        [self.moviesTableView reloadData];
-        
+            self.movies = object[@"movies"];
+            [self.moviesTableView reloadData];
+        }
+        else {
+            NSLog(@"ERROR");
+        }
         [GSProgressHUD dismiss];
     }];
     // [end] fetch data
