@@ -20,6 +20,8 @@
 		202AFA5919420A5700A9950E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 202AFA4119420A5700A9950E /* UIKit.framework */; };
 		202AFA6119420A5700A9950E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 202AFA5F19420A5700A9950E /* InfoPlist.strings */; };
 		202AFA6319420A5700A9950E /* ios_rotten_tomatoesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 202AFA6219420A5700A9950E /* ios_rotten_tomatoesTests.m */; };
+		203678EE19469047009606A4 /* MovieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 203678EC19469047009606A4 /* MovieViewController.m */; };
+		203678EF19469047009606A4 /* MovieViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 203678ED19469047009606A4 /* MovieViewController.xib */; };
 		20EA3D2719458D7C00983CEB /* MoviesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20EA3D2519458D7C00983CEB /* MoviesViewController.m */; };
 		20EA3D2819458D7C00983CEB /* MoviesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20EA3D2619458D7C00983CEB /* MoviesViewController.xib */; };
 		20EA3D2C194596D100983CEB /* MovieTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20EA3D2A194596D100983CEB /* MovieTableViewCell.m */; };
@@ -53,6 +55,9 @@
 		202AFA5E19420A5700A9950E /* ios_rotten_tomatoesTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ios_rotten_tomatoesTests-Info.plist"; sourceTree = "<group>"; };
 		202AFA6019420A5700A9950E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		202AFA6219420A5700A9950E /* ios_rotten_tomatoesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ios_rotten_tomatoesTests.m; sourceTree = "<group>"; };
+		203678EB19469047009606A4 /* MovieViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieViewController.h; sourceTree = "<group>"; };
+		203678EC19469047009606A4 /* MovieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieViewController.m; sourceTree = "<group>"; };
+		203678ED19469047009606A4 /* MovieViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovieViewController.xib; sourceTree = "<group>"; };
 		20EA3D2419458D7C00983CEB /* MoviesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoviesViewController.h; sourceTree = "<group>"; };
 		20EA3D2519458D7C00983CEB /* MoviesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoviesViewController.m; sourceTree = "<group>"; };
 		20EA3D2619458D7C00983CEB /* MoviesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoviesViewController.xib; sourceTree = "<group>"; };
@@ -133,6 +138,9 @@
 				20EA3D29194596D100983CEB /* MovieTableViewCell.h */,
 				20EA3D2A194596D100983CEB /* MovieTableViewCell.m */,
 				20EA3D2B194596D100983CEB /* MovieTableViewCell.xib */,
+				203678EB19469047009606A4 /* MovieViewController.h */,
+				203678EC19469047009606A4 /* MovieViewController.m */,
+				203678ED19469047009606A4 /* MovieViewController.xib */,
 			);
 			path = ios_rotten_tomatoes;
 			sourceTree = "<group>";
@@ -246,6 +254,7 @@
 				202AFA4819420A5700A9950E /* InfoPlist.strings in Resources */,
 				20EA3D2819458D7C00983CEB /* MoviesViewController.xib in Resources */,
 				20EA3D2D194596D100983CEB /* MovieTableViewCell.xib in Resources */,
+				203678EF19469047009606A4 /* MovieViewController.xib in Resources */,
 				202AFA5019420A5700A9950E /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -299,6 +308,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				20EA3D2719458D7C00983CEB /* MoviesViewController.m in Sources */,
+				203678EE19469047009606A4 /* MovieViewController.m in Sources */,
 				202AFA4E19420A5700A9950E /* AppDelegate.m in Sources */,
 				20EA3D2C194596D100983CEB /* MovieTableViewCell.m in Sources */,
 				202AFA4A19420A5700A9950E /* main.m in Sources */,
