@@ -10,6 +10,7 @@
 #import "MovieTableViewCell.h"
 #import "UIImageView+AFNetworking.h"
 #import "MovieViewController.h"
+#import "GSProgressHUD.h"
 
 @interface MoviesViewController ()
 
@@ -41,6 +42,10 @@ UIRefreshControl *refreshControl;
     self.moviesTableView.dataSource = self;
 
     //API: Top Rentals
+
+    // [start] fetch data
+    [GSProgressHUD show];
+
     //NSString *url = @"http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/top_rentals.json?apikey=g9au4hv6khv6wzvzgt55gpqs";
     
     //API: Box Office Movies
@@ -53,7 +58,10 @@ UIRefreshControl *refreshControl;
         
         self.movies = object[@"movies"];
         [self.moviesTableView reloadData];
+        
+        [GSProgressHUD dismiss];
     }];
+    // [end] fetch data
     
     [self.moviesTableView registerNib:[UINib nibWithNibName:@"MovieTableViewCell" bundle:nil] forCellReuseIdentifier:@"MovieTableViewCell"];
 
@@ -77,6 +85,9 @@ UIRefreshControl *refreshControl;
 - (void)refreshTable {
     [refreshControl endRefreshing];
 
+    // [start] fetch data
+    [GSProgressHUD show];
+    
     NSString *url = @"http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?apikey=g9au4hv6khv6wzvzgt55gpqs";
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
@@ -86,7 +97,10 @@ UIRefreshControl *refreshControl;
         
         self.movies = object[@"movies"];
         [self.moviesTableView reloadData];
+        
+        [GSProgressHUD dismiss];
     }];
+    // [end] fetch data
 }
 
 # pragma mark - TableView methods
