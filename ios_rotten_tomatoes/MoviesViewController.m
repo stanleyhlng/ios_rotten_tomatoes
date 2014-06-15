@@ -8,31 +8,31 @@
 
 #import "MoviesViewController.h"
 #import "MovieTableViewCell.h"
+#import "AFNetworking.h"
 #import "UIImageView+AFNetworking.h"
 #import "MovieViewController.h"
 #import "GSProgressHUD.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "UIImageView+UIActivityIndicatorForSDWebImage.h"
 #import "AVHexColor.h"
+#import "Movies.h"
 
 @interface MoviesViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *moviesTableView;
-@property (strong, nonatomic) NSArray *movies;
 @property (weak, nonatomic) IBOutlet UIView *errorView;
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
+@property (strong, nonatomic) NSArray *movies;
 
 @end
 
 @implementation MoviesViewController
-
-UIRefreshControl *refreshControl;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.title = @"Movies";
     }
     return self;
 }
@@ -42,52 +42,34 @@ UIRefreshControl *refreshControl;
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    NSLog(@"movies_vc: viewDidLoad");
+    NSLog(@"url: %@", [[Movies instance] getCurrentUrl]);
+
+    // configure title
+    self.title = [[Movies instance] getCurrentTitle];
+
+    // Configure table view
     self.moviesTableView.delegate = self;
     self.moviesTableView.dataSource = self;
-
-    //API: Top Rentals
-
-    // [start] fetch data
-    [GSProgressHUD show];
-
-    //NSString *url = @"http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/top_rentals.json?apikey=g9au4hv6khv6wzvzgt55gpqs";
     
-    //API: Box Office Movies
-    NSString *url = @"http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?apikey=g9au4hv6khv6wzvzgt55gpqs";
-    
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
-    [NSURLConnection sendAsynchronousRequest:request
-                                       queue:[NSOperationQueue mainQueue]
-                           completionHandler:^(NSURLResponse *response,
-                                               NSData *data,
-                                               NSError *connectionError)
-    {
-        if (connectionError == nil) {
-            id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-            //NSLog(@"%@", object);
-        
-            self.movies = object[@"movies"];
-            [self.moviesTableView reloadData];
-            [self.errorView setHidden:YES];
-        }
-        else {
-            NSLog(@"ERROR");
-            [self.errorView setHidden:NO];
-        }
-        [GSProgressHUD dismiss];
-    }];
-    // [end] fetch data
-    
-    [self.moviesTableView registerNib:[UINib nibWithNibName:@"MovieTableViewCell" bundle:nil] forCellReuseIdentifier:@"MovieTableViewCell"];
-
+    [self.moviesTableView
+     registerNib:[
+                  UINib nibWithNibName:@"MovieTableViewCell"
+                  bundle:nil
+                  ]
+     forCellReuseIdentifier:@"MovieTableViewCell"
+     ];
     self.moviesTableView.rowHeight = 120;
     
-    // Pull to Refresh Control
-    refreshControl = [[UIRefreshControl alloc] init];
-    [self.moviesTableView addSubview:refreshControl];
-    [refreshControl addTarget:self
+    // Configure pull-to-refresh control
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.moviesTableView addSubview:self.refreshControl];
+    [self.refreshControl addTarget:self
                        action:@selector(refreshTable)
              forControlEvents:UIControlEventValueChanged];
+
+    // Fetch movies data
+    [self fetchMovies];
 }
 
 - (void)didReceiveMemoryWarning
@@ -97,38 +79,44 @@ UIRefreshControl *refreshControl;
 }
 
 - (void)refreshTable {
-    [refreshControl endRefreshing];
+    [self.refreshControl endRefreshing];
+    [self fetchMovies];
+}
 
-    // [start] fetch data
+- (NSArray *)fetchMovies
+{
+    NSLog(@"fetchMovies");
+    
+    NSString *string = [[Movies instance] getCurrentUrl];
+    NSURL *url = [NSURL URLWithString:string];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
     [GSProgressHUD show];
-    
-    //NSString *url = @"http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/top_rentals.json?apikey=g9au4hv6khv6wzvzgt55gpqs";
-    
-    //API: Box Office Movies
-    NSString *url = @"http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?apikey=g9au4hv6khv6wzvzgt55gpqs";
-    
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
-    [NSURLConnection sendAsynchronousRequest:request
-                                       queue:[NSOperationQueue mainQueue]
-                           completionHandler:^(NSURLResponse *response,
-                                               NSData *data,
-                                               NSError *connectionError)
-     {
-         if (connectionError == nil) {
-             id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-             //NSLog(@"%@", object);
-             
-             self.movies = object[@"movies"];
-             [self.moviesTableView reloadData];
-             [self.errorView setHidden:YES];
-         }
-         else {
-             NSLog(@"ERROR");
-             [self.errorView setHidden:NO];
-         }
+
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    operation.responseSerializer = [AFJSONResponseSerializer serializer];
+
+    [operation setCompletionBlockWithSuccess:
+     ^(AFHTTPRequestOperation *operation, id responseObject) {
+         // SUCCESS
+         
+         self.movies = responseObject[@"movies"];
+         [self.moviesTableView reloadData];
+         
+         [self.errorView setHidden:YES];
          [GSProgressHUD dismiss];
+     }
+                                     failure:
+     ^(AFHTTPRequestOperation *operation, NSError *error) {
+        // FAILURE
+         
+        [self.errorView setHidden:YES];
+        [GSProgressHUD dismiss];
      }];
-    // [end] fetch data
+    
+    [operation start];
+    
+    return nil;
 }
 
 # pragma mark - TableView methods
@@ -188,6 +176,5 @@ UIRefreshControl *refreshControl;
     
     [self.navigationController pushViewController:vc animated:YES];
 }
-
 
 @end

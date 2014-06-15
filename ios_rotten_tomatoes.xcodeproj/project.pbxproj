@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		00A211FFAB2F4C26880CBED4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 43336DA20A36482994242860 /* libPods.a */; };
+		200CEB21194D866B00FBDF99 /* Movies.m in Sources */ = {isa = PBXBuildFile; fileRef = 200CEB20194D866B00FBDF99 /* Movies.m */; };
 		202AFA3E19420A5700A9950E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 202AFA3D19420A5700A9950E /* Foundation.framework */; };
 		202AFA4019420A5700A9950E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 202AFA3F19420A5700A9950E /* CoreGraphics.framework */; };
 		202AFA4219420A5700A9950E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 202AFA4119420A5700A9950E /* UIKit.framework */; };
@@ -39,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		200CEB1F194D866B00FBDF99 /* Movies.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Movies.h; sourceTree = "<group>"; };
+		200CEB20194D866B00FBDF99 /* Movies.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Movies.m; sourceTree = "<group>"; };
 		202AFA3A19420A5700A9950E /* ios_rotten_tomatoes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ios_rotten_tomatoes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		202AFA3D19420A5700A9950E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		202AFA3F19420A5700A9950E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -93,6 +96,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		200CEB22194D867400FBDF99 /* Movies Data */ = {
+			isa = PBXGroup;
+			children = (
+				200CEB1F194D866B00FBDF99 /* Movies.h */,
+				200CEB20194D866B00FBDF99 /* Movies.m */,
+			);
+			name = "Movies Data";
+			sourceTree = "<group>";
+		};
 		202AFA3119420A5600A9950E = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +140,7 @@
 		202AFA4319420A5700A9950E /* ios_rotten_tomatoes */ = {
 			isa = PBXGroup;
 			children = (
+				200CEB22194D867400FBDF99 /* Movies Data */,
 				2033C9AA194D513100BDAD88 /* Movie Table View Cell */,
 				2033C9A9194D512200BDAD88 /* Movie View */,
 				2033C9A8194D511300BDAD88 /* Movies View */,
@@ -331,6 +344,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				200CEB21194D866B00FBDF99 /* Movies.m in Sources */,
 				20EA3D2719458D7C00983CEB /* MoviesViewController.m in Sources */,
 				203678EE19469047009606A4 /* MovieViewController.m in Sources */,
 				202AFA4E19420A5700A9950E /* AppDelegate.m in Sources */,

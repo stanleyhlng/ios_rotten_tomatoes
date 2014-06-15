@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "MoviesViewController.h"
 #import "AVHexColor.h"
+#import "Movies.h"
 
 @implementation AppDelegate
 
@@ -17,18 +18,45 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
 
-    MoviesViewController *vc = [[MoviesViewController alloc] init];
-    
-    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:vc];
-    
-    self.window.rootViewController = nvc;
-
     // Customize status bar
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
 
     // Customize navigation bar
     [self customizeNavBarAppearance];
     [self customizeBarButtonItemAppearance];
+    
+    // Define root view controller
+    //MoviesViewController *vc = [[MoviesViewController alloc] init];
+    //UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:vc];
+    //self.window.rootViewController = nvc;
+    
+    // Create tab bar controller
+    UITabBarController *tbc = [[UITabBarController alloc] init];
+    tbc.delegate = self;
+    self.window.rootViewController = tbc;
+    
+    // Create view controller with navigation control
+    NSMutableDictionary *views = [[NSMutableDictionary alloc] init];
+
+    views[@"box_office"] =
+        [[UINavigationController alloc]
+         initWithRootViewController: [[MoviesViewController alloc] init]];
+    
+    views[@"top_rentals"] =
+        [[UINavigationController alloc]
+         initWithRootViewController: [[MoviesViewController alloc] init]];
+
+    tbc.viewControllers = @[views[@"box_office"], views[@"top_rentals"]];
+    
+    // Configure tab bar items
+    ((UINavigationController *)views[@"box_office"]).tabBarItem.title = @"Box Office";
+    ((UINavigationController *)views[@"box_office"]).tabBarItem.image = [UIImage imageNamed:@"icon-film"];
+    
+    ((UINavigationController *)views[@"top_rentals"]).tabBarItem.title = @"Top Rentals";
+    ((UINavigationController *)views[@"top_rentals"]).tabBarItem.image = [UIImage imageNamed:@"icon-cd"];
+    
+    // Select "box_office"
+    [Movies instance].current = @"box_office";
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
@@ -80,4 +108,22 @@
     [barButtonItemAppearance setTintColor:[UIColor whiteColor]];
 }
 
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
+{
+    NSLog(@"didSelectViewController");
+
+    NSString *title = viewController.tabBarItem.title;
+    
+    if ([title isEqualToString:@"Box Office"]) {
+        NSLog(@"title = %@", title);
+        [Movies instance].current = @"box_office";
+    }
+    else if ([title isEqualToString:@"Top Rentals"]) {
+        NSLog(@"title = %@", title);
+        [Movies instance].current = @"top_rentals";
+    }
+    else {
+        NSLog(@"title not found! %@", title);
+    }
+}
 @end
