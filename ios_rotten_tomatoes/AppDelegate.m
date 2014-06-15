@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "MoviesViewController.h"
+#import "AVHexColor.h"
 
 @implementation AppDelegate
 
@@ -21,6 +22,13 @@
     UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:vc];
     
     self.window.rootViewController = nvc;
+
+    // Customize status bar
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
+
+    // Customize navigation bar
+    [self customizeNavBarAppearance];
+    [self customizeBarButtonItemAppearance];
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
@@ -52,6 +60,24 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void)customizeNavBarAppearance
+{
+    id navigationBarAppearance = [UINavigationBar appearance];
+    [navigationBarAppearance setTitleTextAttributes:
+     @{
+       NSForegroundColorAttributeName:[UIColor whiteColor],
+       NSFontAttributeName:[UIFont fontWithName:@"HelveticaNeue-Bold" size:16.0f]
+       }];
+    [navigationBarAppearance setTintColor:[AVHexColor colorWithHexString:@"#F7F7F7"]];
+    [navigationBarAppearance setBarTintColor:[AVHexColor colorWithHexString:@"#3B5998"]];
+}
+
+- (void)customizeBarButtonItemAppearance
+{
+    id barButtonItemAppearance = [UIBarButtonItem appearance];
+    [barButtonItemAppearance setTintColor:[UIColor whiteColor]];
 }
 
 @end

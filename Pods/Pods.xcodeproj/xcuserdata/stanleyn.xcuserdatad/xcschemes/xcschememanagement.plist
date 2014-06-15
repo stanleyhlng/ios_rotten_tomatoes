@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-AVHexColor.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-GSProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -37,32 +42,37 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0B017661FB124E79AD3AACC9</key>
+		<key>000DA0C99B3A4EE59C52F745</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2B0C0CEB6CAA44509992C0FC</key>
+		<key>43F857AC6727461292B3CBC6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>ADB111B5D9F143B3B04A1E04</key>
+		<key>55B28638F2F44988B9A3C200</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B66A9A6CDB5143349F76A36E</key>
+		<key>A7712CE1EB4B45B9AADD3CEF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D0328AE0206442689E152A84</key>
+		<key>AEDFE2E1FAAD477586D1AF49</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E16749655940468FAE0E4DE3</key>
+		<key>B233F66013414A09AC4E48A9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BEF2D25955214F44A7A3185C</key>
 		<dict>
 			<key>primary</key>
 			<true/>

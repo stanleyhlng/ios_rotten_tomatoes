@@ -13,6 +13,7 @@
 #import "GSProgressHUD.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "UIImageView+UIActivityIndicatorForSDWebImage.h"
+#import "AVHexColor.h"
 
 @interface MoviesViewController ()
 
@@ -142,6 +143,13 @@ UIRefreshControl *refreshControl;
     
     static NSString *cellIdentifier = @"MovieTableViewCell";
     MovieTableViewCell *cell = [self.moviesTableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    
+    // Customize cell
+    UIView *bgColorView = [[UIView alloc] init];
+    bgColorView.backgroundColor = [AVHexColor colorWithHexString:@"#8B9DC3"];
+    bgColorView.layer.masksToBounds = YES;
+    cell.selectedBackgroundView = bgColorView;
+    cell.backgroundColor = [AVHexColor colorWithHexString:@"#F7F7F7"];
     
     NSDictionary *movie = self.movies[indexPath.row];
     
