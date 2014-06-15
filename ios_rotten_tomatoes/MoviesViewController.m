@@ -110,7 +110,7 @@
      ^(AFHTTPRequestOperation *operation, NSError *error) {
         // FAILURE
          
-        [self.errorView setHidden:YES];
+        [self.errorView setHidden:NO];
         [GSProgressHUD dismiss];
      }];
     

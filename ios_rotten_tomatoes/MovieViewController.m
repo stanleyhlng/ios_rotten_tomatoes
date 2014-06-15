@@ -16,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *movieTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *movieSynopsisLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *moviePosterImageView;
+@property (weak, nonatomic) IBOutlet UIView *contentView;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end
 
@@ -43,6 +45,7 @@
     
     // Movie Synopsis
     self.movieSynopsisLabel.text = [self.movie objectForKey:@"synopsis"];
+    [self.movieSynopsisLabel sizeToFit];
     
     // Movie Poster (low-res)
     [self.moviePosterImageView setAlpha:0.0f];
@@ -64,6 +67,18 @@
      }
      usingActivityIndicatorStyle: UIActivityIndicatorViewStyleWhite
      ];
+    
+    // Configure scroll view
+    CGRect frame = self.contentView.frame;
+    frame = CGRectMake(0, 200,
+                       frame.size.width,
+                       200 +
+                       self.movieTitleLabel.frame.size.height +
+                       10 +
+                       self.movieSynopsisLabel.frame.size.height +
+                       200);
+    self.contentView.frame = frame;
+    self.scrollView.contentSize = self.contentView.frame.size;
 }
 
 - (void)didReceiveMemoryWarning
