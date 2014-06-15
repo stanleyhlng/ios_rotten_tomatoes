@@ -20,15 +20,24 @@ PODS:
     - AFNetworking/NSURLSession
   - GSProgressHUD (0.2)
   - Reveal-iOS-SDK (1.0.4)
+  - SDWebImage (3.6):
+    - SDWebImage/Core
+  - SDWebImage/Core (3.6)
+  - UIActivityIndicator-for-SDWebImage (1.0.5):
+    - SDWebImage (~> 3.2)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.2)
   - GSProgressHUD (~> 0.2)
   - Reveal-iOS-SDK (~> 1.0.4)
+  - SDWebImage (~> 3.6)
+  - UIActivityIndicator-for-SDWebImage (~> 1.0.5)
 
 SPEC CHECKSUMS:
   AFNetworking: ab63e259fe91eef4519b371ef0a4955af0e73e64
   GSProgressHUD: 61321923fbada3ab29803c2f4fb5a0ad452923de
   Reveal-iOS-SDK: d3c8e109d42219daaa7a6e1ad2de34f0bdbb7a88
+  SDWebImage: c6989652c1cdf27cbdf3f56957e2030f825af5bc
+  UIActivityIndicator-for-SDWebImage: d9e46f1592d04cfbeda67bb6d7bba5348558697b
 
 COCOAPODS: 0.33.1

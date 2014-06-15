@@ -11,6 +11,8 @@
 #import "UIImageView+AFNetworking.h"
 #import "MovieViewController.h"
 #import "GSProgressHUD.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+#import "UIImageView+UIActivityIndicatorForSDWebImage.h"
 
 @interface MoviesViewController ()
 
@@ -76,7 +78,6 @@ UIRefreshControl *refreshControl;
     // [end] fetch data
     
     [self.moviesTableView registerNib:[UINib nibWithNibName:@"MovieTableViewCell" bundle:nil] forCellReuseIdentifier:@"MovieTableViewCell"];
-
 
     self.moviesTableView.rowHeight = 120;
     
@@ -151,28 +152,19 @@ UIRefreshControl *refreshControl;
     cell.movieSynopsisLabel.text = movie[@"synopsis"];
     
     // Movie Thumbnail
-    //NSLog(@"%@", movie[@"posters"][@"thumbnail"]);
-    NSURL *url = [NSURL URLWithString:movie[@"posters"][@"thumbnail"]];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    UIImage *placeholderImage = [UIImage imageNamed:@"MovieImagePlaceholder"];
     [cell.moviePosterImageView setAlpha:0.0f];
-    [cell.moviePosterImageView setImageWithURLRequest:request
-                                     placeholderImage:placeholderImage
-                                              success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-                                                  cell.moviePosterImageView.image = image;
-                                                  
-                                                  // Fade in image
-                                                  
-                                                  [UIView beginAnimations:@"fade in" context:nil];
-                                                  
-                                                  [UIView setAnimationDuration:1.0];
-                                                  
-                                                  [cell.moviePosterImageView setAlpha:1.0f];
-                                                  
-                                                  [UIView commitAnimations];
-                                                  
-                                              }
-                                              failure:nil];
+    [cell.moviePosterImageView
+     setImageWithURL:[NSURL URLWithString:movie[@"posters"][@"thumbnail"]]
+     placeholderImage:[UIImage imageNamed:@"MovieImagePlaceholder"]
+     completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+         // Fade in image
+         [UIView beginAnimations:@"fade in" context:nil];
+         [UIView setAnimationDuration:1.0];
+         [cell.moviePosterImageView setAlpha:1.0f];
+         [UIView commitAnimations];
+     }
+     usingActivityIndicatorStyle: UIActivityIndicatorViewStyleWhite
+     ];
     
     return cell;
 }
