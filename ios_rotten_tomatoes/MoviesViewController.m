@@ -155,12 +155,25 @@ UIRefreshControl *refreshControl;
     NSURL *url = [NSURL URLWithString:movie[@"posters"][@"thumbnail"]];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     UIImage *placeholderImage = [UIImage imageNamed:@"MovieImagePlaceholder"];
+    [cell.moviePosterImageView setAlpha:0.0f];
     [cell.moviePosterImageView setImageWithURLRequest:request
                                      placeholderImage:placeholderImage
                                               success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
                                                   cell.moviePosterImageView.image = image;
+                                                  
+                                                  // Fade in image
+                                                  
+                                                  [UIView beginAnimations:@"fade in" context:nil];
+                                                  
+                                                  [UIView setAnimationDuration:1.0];
+                                                  
+                                                  [cell.moviePosterImageView setAlpha:1.0f];
+                                                  
+                                                  [UIView commitAnimations];
+                                                  
                                               }
                                               failure:nil];
+    
     return cell;
 }
 

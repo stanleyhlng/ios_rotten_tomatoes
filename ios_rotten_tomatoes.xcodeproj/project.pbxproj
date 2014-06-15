@@ -128,19 +128,13 @@
 		202AFA4319420A5700A9950E /* ios_rotten_tomatoes */ = {
 			isa = PBXGroup;
 			children = (
+				2033C9AA194D513100BDAD88 /* Movie Table View Cell */,
+				2033C9A9194D512200BDAD88 /* Movie View */,
+				2033C9A8194D511300BDAD88 /* Movies View */,
 				202AFA4C19420A5700A9950E /* AppDelegate.h */,
 				202AFA4D19420A5700A9950E /* AppDelegate.m */,
 				202AFA4F19420A5700A9950E /* Images.xcassets */,
 				202AFA4419420A5700A9950E /* Supporting Files */,
-				20EA3D2419458D7C00983CEB /* MoviesViewController.h */,
-				20EA3D2519458D7C00983CEB /* MoviesViewController.m */,
-				20EA3D2619458D7C00983CEB /* MoviesViewController.xib */,
-				20EA3D29194596D100983CEB /* MovieTableViewCell.h */,
-				20EA3D2A194596D100983CEB /* MovieTableViewCell.m */,
-				20EA3D2B194596D100983CEB /* MovieTableViewCell.xib */,
-				203678EB19469047009606A4 /* MovieViewController.h */,
-				203678EC19469047009606A4 /* MovieViewController.m */,
-				203678ED19469047009606A4 /* MovieViewController.xib */,
 			);
 			path = ios_rotten_tomatoes;
 			sourceTree = "<group>";
@@ -172,6 +166,36 @@
 				202AFA5F19420A5700A9950E /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2033C9A8194D511300BDAD88 /* Movies View */ = {
+			isa = PBXGroup;
+			children = (
+				20EA3D2419458D7C00983CEB /* MoviesViewController.h */,
+				20EA3D2519458D7C00983CEB /* MoviesViewController.m */,
+				20EA3D2619458D7C00983CEB /* MoviesViewController.xib */,
+			);
+			name = "Movies View";
+			sourceTree = "<group>";
+		};
+		2033C9A9194D512200BDAD88 /* Movie View */ = {
+			isa = PBXGroup;
+			children = (
+				203678EB19469047009606A4 /* MovieViewController.h */,
+				203678EC19469047009606A4 /* MovieViewController.m */,
+				203678ED19469047009606A4 /* MovieViewController.xib */,
+			);
+			name = "Movie View";
+			sourceTree = "<group>";
+		};
+		2033C9AA194D513100BDAD88 /* Movie Table View Cell */ = {
+			isa = PBXGroup;
+			children = (
+				20EA3D29194596D100983CEB /* MovieTableViewCell.h */,
+				20EA3D2A194596D100983CEB /* MovieTableViewCell.m */,
+				20EA3D2B194596D100983CEB /* MovieTableViewCell.xib */,
+			);
+			name = "Movie Table View Cell";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -42,16 +42,56 @@
     // Movie Synopsis
     self.movieSynopsisLabel.text = [self.movie objectForKey:@"synopsis"];
     
-    // Movie Poster
-    NSURL *url = [NSURL URLWithString:self.movie[@"posters"][@"detailed"]];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    UIImage *placeholderImage = [UIImage imageNamed:@"MovieImagePlaceholder"];
-    [self.moviePosterImageView setImageWithURLRequest:request
-                                     placeholderImage:placeholderImage
-                                              success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-                                                  self.moviePosterImageView.image = image;
-                                              }
-                                              failure:nil];
+    // Movie Poster (low-res)
+    {
+        NSURL *url = [NSURL URLWithString:self.movie[@"posters"][@"detailed"]];
+        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+        UIImage *placeholderImage = [UIImage imageNamed:@"MovieImagePlaceholder"];
+        [self.moviePosterImageView setAlpha: 0.0f];
+        [self.moviePosterImageView setImageWithURLRequest:request
+                                         placeholderImage:placeholderImage
+                                                  success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+                                                  
+                                                      NSLog(@"Finish loading lo-res image.");
+                                                      
+                                                      // Fade in image
+
+                                                      self.moviePosterImageView.image = image;
+
+                                                      [UIView beginAnimations:@"fade in" context:nil];
+                                                  
+                                                      [UIView setAnimationDuration:1.0];
+
+                                                      [self.moviePosterImageView setAlpha:1.0f];
+                                                  
+                                                      [UIView commitAnimations];
+                                                      
+                                                      
+                                                      // Load HI-RES
+                                                      {
+                                                           NSURL *url = [NSURL URLWithString:self.movie[@"posters"][@"original"]];
+                                                           NSURLRequest *request = [NSURLRequest requestWithURL:url];
+                                                           //UIImage *placeholderImage = [UIImage imageNamed:@"MovieImagePlaceholder"];
+                                                           [self.moviePosterImageView setImageWithURLRequest:request
+                                                           placeholderImage:image
+                                                           success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+                                                           
+                                                               NSLog(@"Finish loading hi-res image.");
+                                                               
+                                                               // Fade in image
+                                                               [UIView beginAnimations:@"fade in" context:nil];
+                                                               
+                                                               [UIView setAnimationDuration:1.0];
+                                                               
+                                                               self.moviePosterImageView.image = image;
+                                                               
+                                                               [UIView commitAnimations];
+                                                           }
+                                                           failure:nil];
+                                                      }
+                                                  }
+                                                  failure:nil];
+    }
 }
 
 - (void)didReceiveMemoryWarning
