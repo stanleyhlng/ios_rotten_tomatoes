@@ -7,10 +7,10 @@
 //
 
 #import "MoviesViewController.h"
+#import "MovieViewController.h"
 #import "MovieTableViewCell.h"
 #import "AFNetworking.h"
 #import "UIImageView+AFNetworking.h"
-#import "MovieViewController.h"
 #import "GSProgressHUD.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "UIImageView+UIActivityIndicatorForSDWebImage.h"
@@ -45,7 +45,7 @@
     NSLog(@"movies_vc: viewDidLoad");
     NSLog(@"url: %@", [[Movies instance] getCurrentUrl]);
 
-    // configure title
+    // Configure title
     self.title = [[Movies instance] getCurrentTitle];
 
     // Configure table view

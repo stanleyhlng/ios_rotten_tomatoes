@@ -16,8 +16,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *movieTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *movieSynopsisLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *moviePosterImageView;
-@property (weak, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIView *contentView;
 
 @end
 
@@ -42,6 +42,7 @@
     title = [title stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     self.title = title;
     self.movieTitleLabel.text = title;
+    [self.movieTitleLabel sizeToFit];
     
     // Movie Synopsis
     self.movieSynopsisLabel.text = [self.movie objectForKey:@"synopsis"];
@@ -59,7 +60,7 @@
          [self.moviePosterImageView setAlpha:1.0f];
          [UIView commitAnimations];
          
-         // Load hi-res
+         // Load hi-res image
          [self.moviePosterImageView
           setImageWithURL:[NSURL URLWithString:self.movie[@"posters"][@"original"]]
           placeholderImage:self.moviePosterImageView.image
